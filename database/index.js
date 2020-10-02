@@ -30,7 +30,11 @@ const productSchema = mongoose.Schema({
   image: String,
   image_mini: String,
   price: Number,
+  salePrice: Number,
+  onSale: Boolean,
   rating: Number,
+  isFavorite: Boolean,
+
 });
 
 const Product = mongoose.model('Product', productSchema);

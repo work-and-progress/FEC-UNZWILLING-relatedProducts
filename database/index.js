@@ -20,6 +20,7 @@ const featureSchema = mongoose.Schema(
 
 const productSchema = mongoose.Schema({
   id: Number,
+  brand: String,
   name: String,
   product_features:
     {
@@ -28,7 +29,7 @@ const productSchema = mongoose.Schema({
     },
   related_products: Array,
   image: String,
-  image_mini: String,
+  imageMini: String,
   price: Number,
   salePrice: Number,
   onSale: Boolean,

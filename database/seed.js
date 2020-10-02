@@ -33,6 +33,7 @@ const seedDB = () => {
 
     const product = {
       id: i,
+      brand: faker.commerce.department(),
       name: faker.commerce.productName(),
       product_features: {
         header: faker.lorem.sentence(),
@@ -40,7 +41,7 @@ const seedDB = () => {
       },
       related_products: faker.random.array('number', 4, 10),
       image: `https://unzwilling.s3-us-west-1.amazonaws.com/${imgCount}.jpg`,
-      image_mini: `https://unzwilling.s3-us-west-1.amazonaws.com/${imgCount}_mini.jpg`,
+      imageMini: `https://unzwilling.s3-us-west-1.amazonaws.com/${imgCount}_mini.jpg`,
       price,
       salePrice,
       rating: faker.random.number({ min: 1, max: 5, precision: 0.01 }),

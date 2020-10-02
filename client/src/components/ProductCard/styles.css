@@ -35,16 +35,9 @@ button.heart {
     background-position: -2800px 0;
 }
 
-/* // BASIC
-body {
-  background: linear-gradient(135deg, #121721 0%, #000000 100%) fixed;
-  color: #FFF;
-  font: 300 16px/1.5 "Open Sans", sans-serif; */
-/* } */
-
 .stage {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 5%;
+  right: 15%;
+  transform: translate(50%, -50%);
 }

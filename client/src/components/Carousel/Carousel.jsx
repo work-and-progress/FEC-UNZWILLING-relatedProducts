@@ -6,13 +6,14 @@ import ProductCard from '../ProductCard/ProductCard';
 export default function Carousel(props) {
   const {
     products,
+    updateProduct,
   } = props;
 
   return (
     <div className={style.wrapper}>
 
       {products.map((product, index) => (
-        <ProductCard product={product} />
+        <ProductCard product={product} updateProduct={updateProduct} />
       ))}
 
     </div>

@@ -8,12 +8,15 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
+      currentProductId: 1,
     };
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
   }
 
   componentDidMount() {
-    this.getRelatedProducts(1);
+    const { currentProductId } = this.state;
+    this.getRelatedProducts(currentProductId);
   }
 
   getRelatedProducts(id) {
@@ -28,6 +31,17 @@ export default class App extends React.Component {
           },
         ],
     });
+  }
+
+  updateProduct(updatedProduct) {
+    const { currentProductId } = this.state;
+    axios.post(`http://localhost:8080/product/${updatedProduct.id}`, updatedProduct)
+      .then((response) => {
+        this.getRelatedProducts(currentProductId);
+      })
+      .catch((error) => {
+        console.log('ERROR');
+      });
   }
 
   // getRelatedProducts(id) {
@@ -47,7 +61,8 @@ export default class App extends React.Component {
     const { products } = this.state;
     return (
       <div className={style.App}>
-        <Carousel products={products} />
+        <h1 className={style.header}>You may also like</h1>
+        <Carousel products={products} updateProduct={this.updateProduct} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRating from '../StarRating/StarRating';
 import style from './styles.css';
 
 export default class ProductCard extends React.Component {
@@ -7,12 +8,32 @@ export default class ProductCard extends React.Component {
     super(props);
 
     const {
-      id, image, imageMini, isFavorite, name, onSale, price, rating, related_products, salePrice, brand
+      id,
+      image,
+      imageMini,
+      isFavorite,
+      name,
+      onSale,
+      price,
+      rating,
+      related_products,
+      salePrice,
+      brand,
     } = props.product;
 
     // console.log(props);
     this.state = {
-      id, image, imageMini, isFavorite, name, onSale, price, rating, related_products, salePrice, brand
+      id,
+      image,
+      imageMini,
+      isFavorite,
+      name,
+      onSale,
+      price,
+      rating,
+      related_products,
+      salePrice,
+      brand,
     };
 
     this.toggleFavorite = this.toggleFavorite.bind(this);
@@ -21,18 +42,19 @@ export default class ProductCard extends React.Component {
   toggleFavorite(e) {
     const { updateProduct } = this.props;
 
-    //remove this once API is working
+    // remove this once API is working
     this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
 
-    //use this when API is working
+    // use this when API is working
     // const updatedProduct = this.state;
     // updatedProduct.isFavorite = !updatedProduct.isFavorite;
     // updateProduct(updatedProduct);
   }
 
   render() {
-    // const { product } = props;
-    const { isFavorite, brand, name, imageMini } = this.state;
+    const {
+      isFavorite, brand, name, imageMini, rating,
+    } = this.state;
     return (
       <div className={style.container}>
         <div className={style.stage}>
@@ -41,6 +63,7 @@ export default class ProductCard extends React.Component {
         <img className={style.image} src={imageMini} alt="thumbnail" />
         <div className={style.brand}>{brand}</div>
         <div className={style.name}>{name}</div>
+        <StarRating rating={rating} />
       </div>
     );
   }

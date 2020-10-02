@@ -24,7 +24,12 @@ faker.random.array = function randomArray(schema, min = 1, max) {
 const seedDB = () => {
   const products = [];
   console.log('seeding started');
-  for (let i = 1; i <= 3; i += 1) {
+  for (let i = 1; i <= 100; i += 1) {
+    const price = faker.random.number({ min: 5, max: 200, precision: 0.01 });
+    const salePrice = price * Math.random() * (0.4) + 0.1;
+    // ternary to set image counter
+    const imgCount = i > 10 ? i - 10 : i;
+
     const product = {
       id: i,
       name: faker.commerce.productName(),
@@ -33,10 +38,13 @@ const seedDB = () => {
         features: faker.random.array('features', 3, 7),
       },
       related_products: faker.random.array('number', 4, 10),
-      image: `https://unzwilling.s3-us-west-1.amazonaws.com/${i}.jpg`,
-      image_mini: `https://unzwilling.s3-us-west-1.amazonaws.com/${i}_mini.jpg`,
-      price: faker.random.number({ min: 5, max: 200, precision: 0.01 }),
+      image: `https://unzwilling.s3-us-west-1.amazonaws.com/${imgCount}.jpg`,
+      image_mini: `https://unzwilling.s3-us-west-1.amazonaws.com/${imgCount}_mini.jpg`,
+      price,
+      salePrice,
       rating: faker.random.number({ min: 1, max: 5, precision: 0.01 }),
+      onSale: faker.random.boolean(),
+      isFavorite: faker.random.boolean(),
     };
 
     products.push(product);

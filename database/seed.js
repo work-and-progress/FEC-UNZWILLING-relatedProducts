@@ -26,7 +26,8 @@ const seedDB = () => {
   console.log('seeding started');
   for (let i = 1; i <= 100; i += 1) {
     const price = faker.random.number({ min: 5, max: 200, precision: 0.01 });
-    const salePrice = price * Math.random() * (0.4) + 0.1;
+    let salePrice = price * Math.random() * (0.95 - 0.70) + 0.70;
+    salePrice = salePrice.toFixed(2);
     // ternary to set image counter
     const imgCount = i > 10 ? i - 10 : i;
 

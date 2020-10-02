@@ -7,12 +7,12 @@ export default class ProductCard extends React.Component {
     super(props);
 
     const {
-      id, image, image_mini, isFavorite, name, onSale, price, rating, related_products, salePrice,
+      id, image, imageMini, isFavorite, name, onSale, price, rating, related_products, salePrice, brand
     } = props.product;
 
     // console.log(props);
     this.state = {
-      id, image, image_mini, isFavorite, name, onSale, price, rating, related_products, salePrice,
+      id, image, imageMini, isFavorite, name, onSale, price, rating, related_products, salePrice, brand
     };
 
     this.toggleFavorite = this.toggleFavorite.bind(this);
@@ -21,22 +21,26 @@ export default class ProductCard extends React.Component {
   toggleFavorite(e) {
     const { updateProduct } = this.props;
 
-    // this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
-    const updatedProduct = this.state;
-    updatedProduct.isFavorite = !updatedProduct.isFavorite;
-    // console.log(updatedProduct);
-    updateProduct(updatedProduct);
+    //remove this once API is working
+    this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
+
+    //use this when API is working
+    // const updatedProduct = this.state;
+    // updatedProduct.isFavorite = !updatedProduct.isFavorite;
+    // updateProduct(updatedProduct);
   }
 
   render() {
     // const { product } = props;
-    const { isFavorite, name } = this.state;
+    const { isFavorite, brand, name, imageMini } = this.state;
     return (
       <div className={style.container}>
         <div className={style.stage}>
           <button type="button" className={isFavorite ? `${style.heart} ${style.is_active}` : style.heart} onClick={this.toggleFavorite}>{ }</button>
         </div>
-        {name}
+        <img className={style.image} src={imageMini} alt="thumbnail" />
+        <div className={style.brand}>{brand}</div>
+        <div className={style.name}>{name}</div>
       </div>
     );
   }

@@ -27,7 +27,7 @@ export default class App extends React.Component {
             id: 19, image: 'https://unzwilling.s3-us-west-1.amazonaws.com/9.jpg', imageMini: 'https://unzwilling.s3-us-west-1.amazonaws.com/9_mini.jpg', isFavorite: false, name: 'Unbranded Metal Salad', onSale: false, price: 27.77, rating: 1.49, related_products: [4, 80, 52, 70, 71, 69, 33, 74, 74], salePrice: 10.83, brand: 'ZWILLING ENFINIGY',
           },
           {
-            id: 20, image: 'https://unzwilling.s3-us-west-1.amazonaws.com/10.jpg', imageMini: 'https://unzwilling.s3-us-west-1.amazonaws.com/10_mini.jpg', isFavorite: true, name: 'Licensed Soft Chips', onSale: false, price: 11.71, rating: 1.57, related_products: [68, 76, 43, 2, 75, 86], salePrice: 10.08, brand: 'BALLARINI TESORO',
+            id: 20, image: 'https://unzwilling.s3-us-west-1.amazonaws.com/10.jpg', imageMini: 'https://unzwilling.s3-us-west-1.amazonaws.com/10_mini.jpg', isFavorite: true, name: 'Licensed Soft Chips', onSale: false, price: 11.71, rating: 3.57, related_products: [68, 76, 43, 2, 75, 86], salePrice: 10.08, brand: 'BALLARINI TESORO',
           },
         ],
     });

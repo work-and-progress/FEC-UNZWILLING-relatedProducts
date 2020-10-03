@@ -40,20 +40,40 @@ export default class ProductCard extends React.Component {
 
   toggleFavorite(e) {
     const { updateProduct } = this.props;
-
-    // remove this once API is working
-    // this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
-
-    // use this when API is working
-    const updatedProduct = this.state;
+    const { updatedProduct } = this.state;
     updatedProduct.isFavorite = !updatedProduct.isFavorite;
     updateProduct(updatedProduct);
   }
 
   render() {
     const {
-      isFavorite, brand, name, imageMini, rating,
+      isFavorite, brand, name, imageMini, rating, onSale, price, salePrice,
     } = this.state;
+
+    let prices;
+
+    if (onSale) {
+      prices = (
+        <>
+          <div className={style.oldPrice}>
+            $
+            {price}
+          </div>
+          <div className={style.price}>
+            $
+            {salePrice}
+          </div>
+        </>
+      );
+    } else {
+      prices = (
+        <div className={style.price}>
+          $
+          {price}
+        </div>
+      );
+    }
+
     return (
       <div className={style.container}>
         <div className={style.stage}>
@@ -63,6 +83,9 @@ export default class ProductCard extends React.Component {
         <div className={style.brand}>{brand}</div>
         <div className={style.name}>{name}</div>
         <StarRating rating={rating} />
+        <div className={style.prices}>
+          {prices}
+        </div>
       </div>
     );
   }

@@ -20,42 +20,28 @@ export default class App extends React.Component {
   }
 
   getRelatedProducts(id) {
-    this.setState({
-      products:
-        [
-          {
-            id: 19, image: 'https://unzwilling.s3-us-west-1.amazonaws.com/9.jpg', imageMini: 'https://unzwilling.s3-us-west-1.amazonaws.com/9_mini.jpg', isFavorite: false, name: 'Unbranded Metal Salad', onSale: false, price: 27.77, rating: 1.49, related_products: [4, 80, 52, 70, 71, 69, 33, 74, 74], salePrice: 10.83, brand: 'ZWILLING ENFINIGY',
-          },
-          {
-            id: 20, image: 'https://unzwilling.s3-us-west-1.amazonaws.com/10.jpg', imageMini: 'https://unzwilling.s3-us-west-1.amazonaws.com/10_mini.jpg', isFavorite: true, name: 'Licensed Soft Chips', onSale: false, price: 11.71, rating: 3.57, related_products: [68, 76, 43, 2, 75, 86], salePrice: 10.08, brand: 'BALLARINI TESORO',
-          },
-        ],
-    });
+    axios.get(`http://localhost:8080/relatedProducts/${id}`)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          products: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log('ERROR: ', error);
+      });
   }
 
   updateProduct(updatedProduct) {
     const { currentProductId } = this.state;
-    axios.post(`http://localhost:8080/product/${updatedProduct.id}`, updatedProduct)
+    axios.post(`http://localhost:8080/products/${updatedProduct.id}`, updatedProduct)
       .then((response) => {
         this.getRelatedProducts(currentProductId);
       })
       .catch((error) => {
-        console.log('ERROR');
+        console.log('ERROR: ', error);
       });
   }
-
-  // getRelatedProducts(id) {
-  //   axios.get(`http://localhost:8080/relatedProducts/${id}`)
-  //     .then((response) => {
-  //       console.log(response);
-  //       this.setState({
-  //         products: response.data.products,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log('ERROR: ');
-  //     });
-  // }
 
   render() {
     const { products } = this.state;

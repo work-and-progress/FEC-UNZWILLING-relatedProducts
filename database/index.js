@@ -62,8 +62,11 @@ const save = (products) => {
 
 const fetch = (id) => Product.findOne({ id });
 
+const fetchRelated = (relatedIds) => Product.find().where('id').in(relatedIds).exec();
+
 module.exports = {
   save,
   fetch,
+  fetchRelated,
   db,
 };

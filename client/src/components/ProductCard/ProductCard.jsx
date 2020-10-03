@@ -21,7 +21,6 @@ export default class ProductCard extends React.Component {
       brand,
     } = props.product;
 
-    // console.log(props);
     this.state = {
       id,
       image,
@@ -43,12 +42,12 @@ export default class ProductCard extends React.Component {
     const { updateProduct } = this.props;
 
     // remove this once API is working
-    this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
+    // this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
 
     // use this when API is working
-    // const updatedProduct = this.state;
-    // updatedProduct.isFavorite = !updatedProduct.isFavorite;
-    // updateProduct(updatedProduct);
+    const updatedProduct = this.state;
+    updatedProduct.isFavorite = !updatedProduct.isFavorite;
+    updateProduct(updatedProduct);
   }
 
   render() {

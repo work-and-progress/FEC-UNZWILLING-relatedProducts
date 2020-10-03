@@ -1,0 +1,73 @@
+.wrapper {
+  background: #F2F0EE;
+  position: relative;
+}
+
+.cards {
+  margin: 100px auto;
+  max-width: 80%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.cards.active {
+  display: block;
+}
+
+button.arrows {
+  position: absolute;
+  border: none;
+  padding: 0;
+  outline:inherit;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  top: 40%;
+  cursor: pointer;
+}
+
+.arrows:focus {
+  outline: 0;
+}
+
+.arrows:hover {
+  background: white;
+  border-color: white;
+  color: #111;
+  opacity: .5;
+}
+
+.arrows_left {
+  left: 5%;
+}
+
+.arrows span{
+  display:block;
+  height:25px;
+  width:25px;
+}
+.arrows_left > span {
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  transform: rotateZ(45deg);
+}
+
+.arrows_right {
+  right: 5%;
+}
+.arrows_right > span {
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotateZ(45deg);
+}
+
+.arrows:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  left: 50%;
+}

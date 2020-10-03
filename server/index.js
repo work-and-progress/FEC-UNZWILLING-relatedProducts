@@ -51,12 +51,13 @@ app.get('/relatedProducts/:id', (req, res) => {
 
 app.post('/products/:id', (req, res) => {
   const product = req.body;
+  const { id } = req.params;
   // save expects an array so wrap in array
   db.save([product])
     .then((response) => {
       if (!response) {
         res.status(400).send(`error finding product with id: ${id}`);
       }
-      res.status(200).send(`product with id ${req.params.id} was saved`);
+      res.status(200).send(`product with id ${id} was saved`);
     });
 });

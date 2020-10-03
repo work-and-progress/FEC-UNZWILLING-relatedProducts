@@ -3,21 +3,48 @@ import React from 'react';
 import style from './styles.css';
 import ProductCard from '../ProductCard/ProductCard';
 
-export default function Carousel(props) {
-  const {
-    products,
-    updateProduct,
-  } = props;
+export default class Carousel extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={style.wrapper}>
+    this.scrollRef = React.createRef();
+    this.goToPrevious = this.goToPrevious.bind(this);
+    this.goToNext = this.goToNext.bind(this);
+  }
 
-      {products.map((product, index) => (
-        <ProductCard product={product} updateProduct={updateProduct} />
-      ))}
+  goToPrevious() {
+    this.scrollRef.current.scrollLeft -= 175;
+  }
 
-    </div>
-  );
+  goToNext() {
+    this.scrollRef.current.scrollLeft += 175;
+  }
+
+  render() {
+    const { products, updateProduct } = this.props;
+    return (
+      <div className={style.wrapper}>
+        <button type="button" className={`${style.arrows} ${style.arrows_left}`} onClick={this.goToPrevious}>
+          <span />
+        </button>
+
+        <div className={style.cards} ref={this.scrollRef}>
+          {products.map((product, index) => (
+            <ProductCard
+              product={product}
+              updateProduct={updateProduct}
+              className={style.slide_item}
+            />
+          ))}
+        </div>
+
+        <button type="button" className={`${style.arrows} ${style.arrows_right}`} onClick={this.goToNext}>
+          <span />
+        </button>
+
+      </div>
+    );
+  }
 }
 
 // Carousel.defaultProps = {

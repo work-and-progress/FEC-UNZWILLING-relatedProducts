@@ -8,7 +8,7 @@ export default function StarRating(props) {
 
   return (
     <div className={style.star_ratings}>
-      <div className={style.fill_ratings} style={{width: `${percentageRating}%`}}>
+      <div className={style.fill_ratings} style={{ width: `${percentageRating}%` }}>
         <span>★★★★★</span>
       </div>
       <div className={style.empty_ratings}>

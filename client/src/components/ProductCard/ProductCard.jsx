@@ -40,7 +40,7 @@ export default class ProductCard extends React.Component {
 
   toggleFavorite(e) {
     const { updateProduct } = this.props;
-    const { updatedProduct } = this.state;
+    const updatedProduct = this.state;
     updatedProduct.isFavorite = !updatedProduct.isFavorite;
     updateProduct(updatedProduct);
   }

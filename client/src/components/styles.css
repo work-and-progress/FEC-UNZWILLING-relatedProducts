@@ -2,13 +2,12 @@ body {
   margin: 0;
 }
 
-.App {
+.relatedProducts {
   display:block;
   font-family:Lato, sans-serif;
   margin: 0;
-  /* max-width:1350px; */
+  width: 100%;
   overflow:hidden;
-  /* padding-top:20px; */
   background: #F2F0EE;
 }
 

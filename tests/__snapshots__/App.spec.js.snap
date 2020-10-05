@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshot renders 1`] = `
+<div
+  className="App"
+>
+  <h1
+    className="header"
+  >
+    You may also like
+  </h1>
+  <div
+    className="wrapper"
+  >
+    <button
+      className="arrows arrows_left"
+      onClick={[Function]}
+      type="button"
+    >
+      <span />
+    </button>
+    <div
+      className="cards"
+    />
+    <button
+      className="arrows arrows_right"
+      onClick={[Function]}
+      type="button"
+    >
+      <span />
+    </button>
+  </div>
+</div>
+`;

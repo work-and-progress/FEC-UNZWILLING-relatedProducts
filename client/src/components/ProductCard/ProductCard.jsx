@@ -38,7 +38,7 @@ export default class ProductCard extends React.Component {
     this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
-  toggleFavorite(e) {
+  toggleFavorite() {
     const { updateProduct } = this.props;
     const updatedProduct = this.state;
     updatedProduct.isFavorite = !updatedProduct.isFavorite;
@@ -91,23 +91,37 @@ export default class ProductCard extends React.Component {
   }
 }
 
-// Carousel.defaultProps = {
-//   header: null,
-//   features: null,
-//   updateActive: null,
-//   activeIndex: 0,
-// };
+ProductCard.defaultProps = {
+  updateProduct: null,
+  product: {},
+};
 
-// Carousel.propTypes = {
-//   features: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       heading: PropTypes.string,
-//       description: PropTypes.string,
-//       posX: PropTypes.number,
-//       posY: PropTypes.number,
-//     }),
-//   ),
-//   header: PropTypes.string,
-//   updateActive: PropTypes.func,
-//   activeIndex: PropTypes.number,
-// };
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    brand: PropTypes.string,
+    name: PropTypes.string,
+    product_features: PropTypes.shape(
+      {
+        header: PropTypes.string,
+        features: PropTypes.arrayOf(
+          PropTypes.shape({
+            heading: PropTypes.string,
+            description: PropTypes.string,
+            posX: PropTypes.number,
+            posY: PropTypes.number,
+          }),
+        ),
+      },
+    ),
+    related_products: PropTypes.arrayOf(PropTypes.number),
+    image: PropTypes.string,
+    imageMini: PropTypes.string,
+    price: PropTypes.number,
+    salePrice: PropTypes.number,
+    onSale: PropTypes.bool,
+    rating: PropTypes.number,
+    isFavorite: PropTypes.bool,
+  }),
+  updateProduct: PropTypes.func,
+};

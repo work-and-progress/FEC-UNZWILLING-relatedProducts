@@ -40,7 +40,6 @@ app.get('/relatedProducts/:id', (req, res) => {
           if (!products) {
             throw Error(`error finding related products for product with id: ${id}`);
           }
-          console.log(products);
           res.status(200).send(products);
         });
     })

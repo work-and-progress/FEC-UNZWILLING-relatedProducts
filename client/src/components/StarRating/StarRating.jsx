@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import style from './styles.css';
 
 export default function StarRating(props) {
@@ -17,3 +17,11 @@ export default function StarRating(props) {
     </div>
   );
 }
+
+StarRating.defaultProps = {
+  rating: null,
+};
+
+StarRating.propTypes = {
+  rating: PropTypes.number,
+};

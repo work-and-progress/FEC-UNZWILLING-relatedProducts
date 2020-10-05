@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import style from './styles.css';
 import ProductCard from '../ProductCard/ProductCard';
 
@@ -29,7 +29,7 @@ export default class Carousel extends React.Component {
         </button>
 
         <div className={style.cards} ref={this.scrollRef}>
-          {products.map((product, index) => (
+          {products.map((product) => (
             <ProductCard
               product={product}
               updateProduct={updateProduct}
@@ -47,23 +47,38 @@ export default class Carousel extends React.Component {
   }
 }
 
-// Carousel.defaultProps = {
-//   header: null,
-//   features: null,
-//   updateActive: null,
-//   activeIndex: 0,
-// };
+Carousel.defaultProps = {
+  products: [],
+  updateProduct: null,
+};
 
-// Carousel.propTypes = {
-//   features: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       heading: PropTypes.string,
-//       description: PropTypes.string,
-//       posX: PropTypes.number,
-//       posY: PropTypes.number,
-//     }),
-//   ),
-//   header: PropTypes.string,
-//   updateActive: PropTypes.func,
-//   activeIndex: PropTypes.number,
-// };
+Carousel.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      brand: PropTypes.string,
+      name: PropTypes.string,
+      product_features:
+        PropTypes.shape({
+          header: PropTypes.string,
+          features: PropTypes.arrayOf(
+            PropTypes.shape({
+              heading: PropTypes.string,
+              description: PropTypes.string,
+              posX: PropTypes.number,
+              posY: PropTypes.number,
+            }),
+          ),
+        }),
+      related_products: PropTypes.arrayOf(PropTypes.number),
+      image: PropTypes.string,
+      imageMini: PropTypes.string,
+      price: PropTypes.number,
+      salePrice: PropTypes.number,
+      onSale: PropTypes.bool,
+      rating: PropTypes.number,
+      isFavorite: PropTypes.bool,
+    }),
+  ),
+  updateProduct: PropTypes.func,
+};

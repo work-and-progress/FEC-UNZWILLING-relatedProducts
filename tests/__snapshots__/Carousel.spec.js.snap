@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Have props snapshot renders 1`] = `
+<div
+  className="wrapper"
+>
+  <button
+    className="arrows arrows_left"
+    onClick={[Function]}
+    type="button"
+  >
+    <span />
+  </button>
+  <div
+    className="cards"
+  />
+  <button
+    className="arrows arrows_right"
+    onClick={[Function]}
+    type="button"
+  >
+    <span />
+  </button>
+</div>
+`;

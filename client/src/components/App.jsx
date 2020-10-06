@@ -19,10 +19,14 @@ export default class App extends React.Component {
     this.getRelatedProducts(currentProductId);
   }
 
+  getProduct(id) {
+    this.setState({ currentProductId: id });
+    this.getRelatedProducts(id);
+  }
+
   getRelatedProducts(id) {
-    axios.get(`http://localhost:8080/relatedProducts/${id}`)
+    axios.get(`http://localhost:3001/relatedProducts/${id}`)
       .then((response) => {
-        console.log(response);
         this.setState({
           products: response.data,
         });
@@ -34,7 +38,7 @@ export default class App extends React.Component {
 
   updateProduct(updatedProduct) {
     const { currentProductId } = this.state;
-    axios.post(`http://localhost:8080/products/${updatedProduct.id}`, updatedProduct)
+    axios.post(`http://localhost:3001/products/${updatedProduct.id}`, updatedProduct)
       .then((response) => {
         this.getRelatedProducts(currentProductId);
       })
@@ -46,7 +50,7 @@ export default class App extends React.Component {
   render() {
     const { products } = this.state;
     return (
-      <div className={style.App}>
+      <div className={style.relatedProducts}>
         <h1 className={style.header}>You may also like</h1>
         <Carousel products={products} updateProduct={this.updateProduct} />
       </div>

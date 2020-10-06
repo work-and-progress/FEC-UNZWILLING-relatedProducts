@@ -19,10 +19,14 @@ export default class App extends React.Component {
     this.getRelatedProducts(currentProductId);
   }
 
+  getProduct(id) {
+    this.setState({ currentProductId: id });
+    this.getRelatedProducts(id);
+  }
+
   getRelatedProducts(id) {
     axios.get(`http://localhost:3001/relatedProducts/${id}`)
       .then((response) => {
-        console.log(response);
         this.setState({
           products: response.data,
         });

@@ -25,7 +25,7 @@ export default class App extends React.Component {
   }
 
   getRelatedProducts(id) {
-    axios.get(`http://localhost:3001/relatedProducts/${id}`)
+    axios.get(`/relatedProducts/${id}`)
       .then((response) => {
         this.setState({
           products: response.data,
@@ -38,7 +38,7 @@ export default class App extends React.Component {
 
   updateProduct(updatedProduct) {
     const { currentProductId } = this.state;
-    axios.post(`http://localhost:3001/products/${updatedProduct.id}`, updatedProduct)
+    axios.post(`/products/${updatedProduct.id}`, updatedProduct)
       .then((response) => {
         this.getRelatedProducts(currentProductId);
       })

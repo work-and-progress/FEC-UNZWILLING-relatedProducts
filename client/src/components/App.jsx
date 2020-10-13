@@ -38,7 +38,7 @@ export default class App extends React.Component {
 
   updateProduct(updatedProduct) {
     const { currentProductId } = this.state;
-    axios.post(`/products/${updatedProduct.id}`, updatedProduct)
+    axios.post(`/products/relatedProducts/${updatedProduct.id}`, updatedProduct)
       .then((response) => {
         this.getRelatedProducts(currentProductId);
       })

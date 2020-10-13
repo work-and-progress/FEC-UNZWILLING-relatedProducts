@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-app.get('/products/:id', (req, res) => {
+app.get('/products/relatedProducts/:id', (req, res) => {
   const { id } = req.params;
   db.fetch(id)
     .then((product) => {
@@ -50,7 +50,7 @@ app.get('/relatedProducts/:id', (req, res) => {
     });
 });
 
-app.post('/products/:id', (req, res) => {
+app.post('/products/relatedProducts/:id', (req, res) => {
   const product = req.body;
   const { id } = req.params;
   // save expects an array so wrap in array

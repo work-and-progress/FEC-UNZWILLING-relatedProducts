@@ -6,6 +6,18 @@ Delete
 # FEC-UNZWILLING-related-products
 [![Build Status](https://zazuapp.org/images/package-icons/docker.png)](https://www.docker.com/)
 
+### CREATE
+##### POST related products
+  - post: `'/products/relatedProducts/:id' `
+##### Path Parameters
+  - `id` listing id
+##### Success Status Code: `201`
+##### Returns: JSON object of single related products
+```javascript
+`product with id ${id} was saved`
+```
+
+### READ
 ##### GET related products
   - get: `'/products/relatedProducts/:id' `
 ##### Path Parameters
@@ -597,13 +609,70 @@ Delete
 ]
 ```
 
-##### GET related products
-  - get: `'/products/relatedProducts/:id' `
+### UPDATE
+##### PUT related products
+  - put: `'/relatedProducts/:id'`
 ##### Path Parameters
   - `id` listing id
-##### Success Status Code: `200`
-##### Returns: JSON array of multiple related products
+##### Success Status Code: `202`
+##### Returns: JSON object of single related product
+
 ```javascript
-`product with id ${id} was saved`
+{
+    "product_features": {
+        "header": "Eveniet sequi enim veritatis quasi velit esse ea fugit cupiditate.",
+        "features": [
+            {
+                "_id": "5f86354108cbf2387ac84340",
+                "heading": "Qui soluta earum eum unde dolore voluptas id ea.",
+                "description": "Rerum ut et alias est. Est non dignissimos architecto optio atque tempora perferendis eum velit. Debitis exercitationem tenetur dolores est nihil voluptatem dolore. Ipsa qui dolores ut veniam ut. Sapiente occaecati quasi numquam placeat omnis explicabo et accusantium. Quidem dolor id maxime vel et sequi magni rem quisquam.",
+                "posX": 71,
+                "posY": 42
+            },
+            {
+                "_id": "5f86354108cbf2387ac84341",
+                "heading": "Odio ipsam labore voluptas non aut corporis ut est ducimus.",
+                "description": "At iure cum molestiae quae qui dolores officiis quis et. Et sit consectetur provident. Similique harum ad aut deserunt qui iste aperiam quia. Distinctio aperiam fugit neque id.",
+                "posX": 17,
+                "posY": 71
+            },
+            {
+                "_id": "5f86354108cbf2387ac84342",
+                "heading": "Omnis optio neque quae quis repudiandae sunt aut hic vel.",
+                "description": "Laboriosam qui a. Reiciendis explicabo porro ducimus dolore esse hic aut cumque. Ea vel placeat. Consequatur est omnis repellat. Qui et similique aut rerum quia. Officia nihil tenetur consequuntur.",
+                "posX": 31,
+                "posY": 12
+            }
+        ]
+    },
+    "related_products": [
+        26,
+        48,
+        94,
+        22,
+        9,
+        20,
+        29,
+        62
+    ],
+    "_id": "5f863541e46f0fb554a9a46b",
+    "id": 1,
+    "__v": 0,
+    "brand": "Grocery",
+    "image": "https://unzwilling.s3-us-west-1.amazonaws.com/1.jpg",
+    "imageMini": "https://unzwilling.s3-us-west-1.amazonaws.com/1_mini.jpg",
+    "isFavorite": false,
+    "name": "Incredible Concrete Table",
+    "onSale": false,
+    "price": 137.97,
+    "rating": 4.2,
+    "salePrice": 116.92
+}
 ```
 
+### DELETE
+##### delete related products
+  - delete: `'/relatedProducts/:id'`
+##### Path Parameters
+  - `id` listing id
+##### Success Status Code: `202`

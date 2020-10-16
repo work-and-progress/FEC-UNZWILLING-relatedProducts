@@ -64,9 +64,24 @@ const fetch = (id) => Product.findOne({ id });
 
 const fetchRelated = (relatedIds) => Product.find().where('id').in(relatedIds).exec();
 
+const update = (id) => {
+  const filter = { id };
+  const update = {
+    $inc: { "price": 10 }
+  }
+  return Product.findOneAndUpdate(filter, update);
+}
+
+const remove = (id) => {
+  const filter = { id };
+  return Product.deleteOne( filter );
+}
+
 module.exports = {
   save,
   fetch,
   fetchRelated,
+  update,
+  remove,
   db,
 };

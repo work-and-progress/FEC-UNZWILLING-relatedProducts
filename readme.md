@@ -1,5 +1,6 @@
 # FEC-UNZWILLING-related-products
-[![Build Status](https://zazuapp.org/images/package-icons/docker.png)](https://www.docker.com/)
+
+<img src="https://i.postimg.cc/QdwVTj0D/workandprogress.jpg" width="200">
 
 ### CREATE
 ##### POST related products
@@ -189,7 +190,7 @@
 
 ### UPDATE
 ##### PUT related products
-  - put: `'/relatedProducts/:id'`
+  - put: `'/products/relatedProducts/:id'`
 ##### Path Parameters
   - `id` listing id
 ##### Success Status Code: `202`

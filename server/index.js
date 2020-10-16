@@ -62,3 +62,26 @@ app.post('/products/relatedProducts/:id', (req, res) => {
       res.status(200).send(`product with id ${id} was saved`);
     });
 });
+
+app.put('/products/relatedProducts/:id', (req, res) => {
+  const { id } = req.params;
+  db.update(id)
+    .then(response => {
+      if (!response) {
+        res.status(400).send(`error finding product with id: ${id}`);
+      }
+      res.status(201).send(response);
+    })
+})
+
+app.delete('/products/relatedProducts/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.remove(id)
+    .then(response => {
+      if (!response) {
+        res.status(400).send(`error finding product with id: ${id}`);
+      }
+      res.status(200).send(`product with id ${id} was deleted`);
+    });
+});

@@ -17,6 +17,7 @@ app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
+// get one product (obj)
 app.get('/products/relatedProducts/:id', (req, res) => {
   const { id } = req.params;
   db.fetch(id)
@@ -28,6 +29,7 @@ app.get('/products/relatedProducts/:id', (req, res) => {
     });
 });
 
+// get related products (array of objs)
 app.get('/relatedProducts/:id', (req, res) => {
   const { id } = req.params;
 
@@ -50,6 +52,7 @@ app.get('/relatedProducts/:id', (req, res) => {
     });
 });
 
+// post one prodcut
 app.post('/products/relatedProducts/:id', (req, res) => {
   const product = req.body;
   const { id } = req.params;
@@ -63,6 +66,7 @@ app.post('/products/relatedProducts/:id', (req, res) => {
     });
 });
 
+// delete one product
 app.put('/products/relatedProducts/:id', (req, res) => {
   const { id } = req.params;
   db.update(id)

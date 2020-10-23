@@ -1,7 +1,7 @@
 const fs = require('fs')
 const faker = require('faker')
 
-const lines = 1000000
+const lines = 10000000
 const filename = 'products.csv'
 const stream = fs.createWriteStream(filename)
 
@@ -9,7 +9,7 @@ const createProduct = (i) => {
   const id = i
   const name = faker.commerce.productName()
   const brand = faker.commerce.department()
-  const prodcut = faker.commerce.product()
+  const product = faker.commerce.product()
   const material = faker.commerce.productMaterial()
   const adjective = faker.commerce.productAdjective()
   const imageMini = faker.image.image()
@@ -19,7 +19,7 @@ const createProduct = (i) => {
   const rating = faker.random.number({ min: 1, max: 5, precision: 0.01 })
   const isFavorite = faker.random.boolean()
 
-  return `${id},${name},${brand},${prodcut},${material},${adjective},${imageMini},${price},${salesPrice},${onSale},${rating},${isFavorite}\n`
+  return `${id},${name},${brand},${product},${material},${adjective},${imageMini},${price},${salesPrice},${onSale},${rating},${isFavorite}\n`
 }
 
 const startWriting = (writeStream, encoding, done) => {
@@ -49,8 +49,23 @@ const startWriting = (writeStream, encoding, done) => {
 }
 
 //write our `header` line before we invoke the loop
-stream.write(`id,name,brand,prodcut,material,adjective,imageMini,price,salesPrice,onSale,rating,isFavorite\n`, 'utf-8')
+stream.write(`id,name,brand,product,material,adjective,imageMini,price,salesPrice,onSale,rating,isFavorite\n`, 'utf-8')
+
+
+// function logTimeElapsed(ms) {
+//   var minutes = Math.floor(ms / 60000);
+//   var seconds = ((ms % 60000) / 1000).toFixed(0);
+//   console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+// }
+
+// const startTime = new Date();
+
 //invoke startWriting and pass callback
 startWriting(stream, 'utf-8', () => {
   stream.end()
+  // const timeElapsed = new Date() - startTime;
+  // logTimeElapsed(timeElapsed);
 })
+
+
+// SELECT * FROM "public"."product" WHERE brand='Movies' AND product='Towels' AND material='Steel' AND adjective='Licensed' ORDER BY "id"

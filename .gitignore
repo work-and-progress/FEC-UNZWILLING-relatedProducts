@@ -1,3 +1,4 @@
 node_modules
 client/dist/main.bundle.js
 coverage
+*.csv

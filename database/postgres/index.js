@@ -6,7 +6,7 @@ const pool = new Pool({
   database: 'product',
 })
 
-const getRelatedProducts = async(brand, product, material, adjective) => pool.query(`SELECT * FROM product WHERE brand = '${brand}' AND product = '${product}' AND material = '${material}' AND adjective = '${adjective}' ORDER BY "id"`);
+const getRelatedProducts = async(brand, product, material, adjective) => pool.query(`SELECT * FROM product WHERE brand = '${brand}' AND product = '${product}' AND material = '${material}' AND adjective = '${adjective}'`);
 
 module.exports = {
   getRelatedProducts,

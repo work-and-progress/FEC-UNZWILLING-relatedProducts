@@ -1,3 +1,5 @@
+require('newrelic');
+const compression = require('compression');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -8,6 +10,7 @@ const app = express();
 const port = 3002;
 
 // app.use(express.static(`${__dirname}/../client/dist`));
+app.use(compression());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

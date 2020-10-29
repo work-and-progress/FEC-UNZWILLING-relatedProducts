@@ -22,7 +22,10 @@ export let options = {
 export default function () {
 
   let responses = http.get('http://localhost:3002/getRelatedProducts/Movies/Towels/Steel/Licensed');
-  // console.log(JSON.stringify(responses));
 
   sleep(1.2);
 }
+
+// sudo scp -i wap-questions.pem appa.csv ec2-user@ec2-18-224-251-206.us-east-2.compute.amazonaws.com:~/
+
+// sudo scp -i "SDC-key.pem" /Users/henrylo/Documents/Work/Hack_Reactor/React/related-products/database/category.csv ec2-user@ec2-13-56-13-2.us-west-1.compute.amazonaws.com:~/

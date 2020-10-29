@@ -20,13 +20,26 @@ app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-// get related products (array of objs)
+// create related product (obj)
+app.post('/postRelatedProduct', async (req, res) => {
+  // const {id,name,brand,product,material,adjective,imageMini,price,salesPrice,onSale,rating,isFavorite} = req.body;
+  // const product = {id,name,brand,product,material,adjective,imageMini,price,salesPrice,onSale,rating,isFavorite};
+  console.log(req.body);
+  try {
+    await db.postRelatedProduct(req.body);
+    res.status(200).send('[SUCCESS] product added');
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+// read related products (array of objs)
 app.get('/getRelatedProducts/:brand/:product/:material/:adjective', async (req, res) => {
   const { brand, product, material, adjective } = req.params;
   try {
     const { rows } = await db.getRelatedProducts(brand, product, material, adjective);
     res.status(200).send(rows);
   } catch (err) {
-    res.status(400).send('No related products');
+    res.status(400).send('[FAILED] No related products');
   }
 });
